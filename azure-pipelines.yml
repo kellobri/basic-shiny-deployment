@@ -14,9 +14,9 @@ variables:
 - name: CONTENT_DIRECTORY
   value: content-dir
 - name: VANITY_NAME
-  value: azure-devops-template
+  value: azure-devops-shiny
 - name: UNIQ_NAME
-  value: unique-name-example
+  value: basic-shiny-app
 
 steps:
 - task: Bash@3
@@ -26,20 +26,8 @@ steps:
   env:
     CONNECT_API_KEY: $(CONNECT_API_KEY)
 - task: Bash@3
-  displayName: 'Update RunAs User'
-  inputs:
-    filePath: 'optional-steps/runas-user.sh'
-  env:
-    CONNECT_API_KEY: $(CONNECT_API_KEY)
-- task: Bash@3
   displayName: 'Set Vanity URL'
   inputs:
     filePath: 'optional-steps/set-vanity-url.sh'
-  env:
-    CONNECT_API_KEY: $(CONNECT_API_KEY)
-- task: Bash@3
-  displayName: 'Update Access Control List'
-  inputs:
-    filePath: 'optional-steps/update-acl.sh'
   env:
     CONNECT_API_KEY: $(CONNECT_API_KEY)
